@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yingsu.newbuss.mapper.TBussesserMapper">
+  <resultMap id="BaseResultMap" type="com.yingsu.newbuss.entity.TBussesser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="bussesser_name" jdbcType="VARCHAR" property="bussesserName" />
+    <result column="community_id" jdbcType="INTEGER" property="communityId" />
+    <result column="catagory_id" jdbcType="INTEGER" property="catagoryId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, bussesser_name, community_id, catagory_id, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_bussesser
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_bussesser
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yingsu.newbuss.entity.TBussesser">
+    insert into t_bussesser (id, bussesser_name, community_id, 
+      catagory_id, create_time)
+    values (#{id,jdbcType=INTEGER}, #{bussesserName,jdbcType=VARCHAR}, #{communityId,jdbcType=INTEGER}, 
+      #{catagoryId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yingsu.newbuss.entity.TBussesser">
+    insert into t_bussesser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bussesserName != null">
+        bussesser_name,
+      </if>
+      <if test="communityId != null">
+        community_id,
+      </if>
+      <if test="catagoryId != null">
+        catagory_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bussesserName != null">
+        #{bussesserName,jdbcType=VARCHAR},
+      </if>
+      <if test="communityId != null">
+        #{communityId,jdbcType=INTEGER},
+      </if>
+      <if test="catagoryId != null">
+        #{catagoryId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yingsu.newbuss.entity.TBussesser">
+    update t_bussesser
+    <set>
+      <if test="bussesserName != null">
+        bussesser_name = #{bussesserName,jdbcType=VARCHAR},
+      </if>
+      <if test="communityId != null">
+        community_id = #{communityId,jdbcType=INTEGER},
+      </if>
+      <if test="catagoryId != null">
+        catagory_id = #{catagoryId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yingsu.newbuss.entity.TBussesser">
+    update t_bussesser
+    set bussesser_name = #{bussesserName,jdbcType=VARCHAR},
+      community_id = #{communityId,jdbcType=INTEGER},
+      catagory_id = #{catagoryId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
