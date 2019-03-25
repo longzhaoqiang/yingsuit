@@ -3,6 +3,7 @@ package com.yingsu.newbuss.controller;
 import com.yingsu.newbuss.entity.TBussesser;
 import com.yingsu.newbuss.entity.base.ResultBase;
 import com.yingsu.newbuss.service.IBussesserService;
+import com.yingsu.newbuss.util.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,11 +14,15 @@ public class BussesserController {
 
     @Autowired
     private IBussesserService bussesserService;
+    @Autowired
+    private RedisService redisService;
 
     @RequestMapping("/getBussesser")
     public ResultBase getBussesser(Integer bussesserId){
         TBussesser tBussesser = null;
         ResultBase resultBase = new ResultBase();
+        redisService.set("1111001","100",6000L);
+        String s = (String) redisService.get("1111001");
         try {
             tBussesser = bussesserService.getBussersser(bussesserId);
             resultBase.setObject(tBussesser);
