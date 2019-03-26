@@ -1,0 +1,24 @@
+.login-img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #dedede;
+    padding: 2px;
+    margin: 3rem auto;
+}
+.login-img img{
+    width: 100%;
+    border-radius: 50%;
+}
+.weui-cells {
+    margin-top: 0;
+}
+.weui-cells:before {
+    border-top: none;
+    height: 0;
+    color: #fff;
+}
+.login-btn{
+    padding: 4rem 0.625rem;
+}

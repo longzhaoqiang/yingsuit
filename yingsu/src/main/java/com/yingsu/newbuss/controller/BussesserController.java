@@ -1,14 +1,20 @@
 package com.yingsu.newbuss.controller;
 
+import com.sun.deploy.net.HttpResponse;
 import com.yingsu.newbuss.entity.TBussesser;
 import com.yingsu.newbuss.entity.base.ResultBase;
 import com.yingsu.newbuss.service.IBussesserService;
 import com.yingsu.newbuss.util.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+import javax.servlet.http.HttpServletResponse;
+
+@Controller
 @RequestMapping("/yingsu/buss")
 public class BussesserController {
 
@@ -33,4 +39,5 @@ public class BussesserController {
 
         return resultBase;
     }
+
 }

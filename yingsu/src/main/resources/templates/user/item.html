@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECShop详情页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/item.css">
+    <link rel="stylesheet" href="css/theme-color.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="zyw-header">
+    <div class="zyw-container white-color">
+        <div class="head-l"><a href="javascript:window.history.back(-1)" target="_self"><img src="img/svg/head-return.svg" alt=""></a></div>
+        <h1><a href="#" class="active">商品</a><a href="#item-precent">详情</a><a href="">评价</a></h1>
+        <div class="head-r"><img src="img/svg/head-more.svg" alt=""></div>
+    </div>
+</header>
+<footer class="zyw-footer">
+    <div class="zyw-container white-bgcolor clearfix">
+        <div class="col-sm-2 col-xs-2">
+            <a href="javascript:;" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="./img/svg/item-1.svg" alt="">
+                </div>
+                <p class="weui-tabbar__label">店铺</p>
+            </a>
+        </div>
+        <div class="col-sm-2 col-xs-2">
+            <a href="cart.html" class="weui-tabbar__item">
+                <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+                <div class="weui-tabbar__icon">
+                    <img src="./img/svg/item-2.svg" alt="">
+                </div>
+                <p class="weui-tabbar__label">购物车</p>
+            </a>
+        </div>
+        <div class="col-sm-2 col-xs-2">
+            <a href="javascript:;" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="./img/svg/item-3.svg" alt="">
+                </div>
+                <p class="weui-tabbar__label">收藏</p>
+            </a>
+        </div>
+        <div class="col-sm-3 col-xs-3">
+            <a href="" class="footer-btn footer-warning">立即购买</a>
+        </div>
+        <div class="col-sm-3 col-xs-3">
+            <a href="" class="footer-btn footer-danger">加入购物车</a>
+        </div>
+    </div>
+</footer>
+<section class="zyw-container">
+    <!-- Swiper -->
+    <div class="item-img">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="https://m.360buyimg.com/n12/jfs/t12352/88/127708421/67468/90baaf73/5a04172aN29f845bf.jpg!q70.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="https://m.360buyimg.com/n12/jfs/t13438/360/124743365/49464/474ae43b/5a03ffaeNeb7db52b.jpg!q70.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="https://m.360buyimg.com/n12/jfs/t12814/353/139949949/27453/5a037076/5a03ff88N7bdff90d.jpg!q70.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="https://m.360buyimg.com/n12/jfs/t11485/251/1617504994/45865/1e52d881/5a03ff99Ne79b5ee9.jpg!q70.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="https://m.360buyimg.com/n12/jfs/t11140/344/1557119770/31087/d11c46ac/5a03ff9fNd553a907.jpg!q70.jpg" alt=""></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="item-details white-bgcolor clearfix">
+        <h3 class="details-title">Apple 苹果 iPhone X 手机 全面屏 银色 64GB</h3>
+        <strong class="details-prince theme-color pull-left">￥7858.00</strong>
+        <span class="details-volume pull-right">月销：1028件</span>
+    </div>
+    <div class="item-choose weui-cells mt-625">
+        <a class="weui-cell weui-cell_access open-popup" href="javascript:;" data-target="#item_spec">
+            <div class="weui-cell__bd">
+                <p class="choose-text">选择 <span>颜色分类</span></p>
+            </div>
+            <div class="weui-cell__ft choose-des">
+            </div>
+        </a>
+        <div id="item_spec" class="weui-popup__container popup-bottom">
+            <div class="weui-popup__overlay"></div>
+            <div class="weui-popup__modal">
+                <div class="item-spec-layer white-bgcolor">
+                    <div class="spec-head clearfix">
+                        <div class="spec-head-img"><img src="https://m.360buyimg.com/n1/jfs/t15787/353/109633918/16701/5a8390ef/5a27ae6dNc530b5bb.jpg!q70.jpg" alt=""></div>
+                        <strong class="spec-head-prince theme-color">￥7800.00</strong>
+                        <p class="spec-head-intro">商品编号：51867</p>
+                    </div>
+                    <div class="spec-info clearfix">
+                        <div class="spec-info-hd">颜色</div>
+                        <div class="spec-info-bd">
+                            <ul>
+                                <li class="active">银色</li>
+                                <li>深空灰色</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="spec-info clearfix">
+                        <div class="spec-info-hd">版本</div>
+                        <div class="spec-info-bd">
+                            <ul>
+                                <li>64GB</li>
+                                <li class="active">256GB</li>
+                                <li>64GB+一年碎屏险套餐</li>
+                                <li>256GB+一年碎屏险套餐</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="spec-length mb-625">
+                        <div class="weui-cell__bd">
+                            <p class="length-hd">数量</p>
+                        </div>
+                        <div class="weui-cell__ft">
+                            <div class="weui-count">
+                                <a class="weui-count__btn weui-count__decrease"></a>
+                                <input class="weui-count__number" type="number" value="1">
+                                <a class="weui-count__btn weui-count__increase"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="item-layer-button theme-bgcolor white-color" type="submit">确定</button>
+                    <a href="javascript:;" class="close-popup spec-close"><i class="fa fa-close"></i></a>
+                </div>
+            </div>
+        </div>
+        <a class="weui-cell weui-cell_access open-popup" href="javascript:;" data-target="#item_parameter">
+            <div class="weui-cell__bd">
+                <p class="choose-text">产品参数</p>
+            </div>
+            <div class="weui-cell__ft choose-des">
+            </div>
+        </a>
+        <div id="item_parameter" class="weui-popup__container popup-bottom">
+            <div class="weui-popup__overlay"></div>
+            <div class="weui-popup__modal">
+                <div class="item-parameter-layer white-bgcolor">
+                    <h3 class="parameter-title">产品参数</h3>
+                    <table class="table table-condensed parameter-table">
+                        <tr>
+                            <th>品牌</th>
+                            <td>Apple/苹果</td>
+                        </tr>
+                        <tr>
+                            <th>Apple型号</th>
+                            <td>Apple X</td>
+                        </tr>
+                        <tr>
+                            <th>网络类型</th>
+                            <td>无需合约版</td>
+                        </tr>
+                        <tr>
+                            <th>机身颜色</th>
+                            <td>深空灰色 银色</td>
+                        </tr>
+                        <tr>
+                            <th>套餐类型</th>
+                            <td>官方标配</td>
+                        </tr>
+                        <tr>
+                            <th>售后服务</th>
+                            <td>全国联保</td>
+                        </tr>
+                        <tr>
+                            <th>存储容量</th>
+                            <td>256GB 64GB</td>
+                        </tr>
+                    </table>
+                    <button class="item-layer-button theme-bgcolor white-color close-popup" type="submit">完成</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item-serve">
+        <span><i class="fa fa-check-circle-o theme-color"></i> 品质承诺</span>
+        <span><i class="fa fa-check-circle-o theme-color"></i> 七天包退换</span>
+        <span><i class="fa fa-check-circle-o theme-color"></i> 如实描述</span>
+    </div>
+    <div class="item-assess weui-cells mb-625">
+        <a class="weui-cell weui-cell_access" href="javascript:;">
+            <div class="weui-cell__bd">
+                <p class="choose-text">用户评价（<em class="theme-color">0</em>条）</p>
+            </div>
+            <div class="weui-cell__ft choose-des">
+                100%好评
+            </div>
+        </a>
+    </div>
+    <div class="item-precent white-bgcolor" id="item-precent">
+        <h4>图文详情</h4>
+        <span>
+            <img src="https://img30.360buyimg.com/popWareDetail/jfs/t14719/85/1877166841/278152/3ae6ff0/5a5efcd6N154d1c5a.jpg" alt="">
+            <img src="https://img30.360buyimg.com/popWareDetail/jfs/t13027/52/352981969/231830/badc500e/5a095d00N15968051.jpg" alt="">
+            <img src="https://img10.360buyimg.com/imgzone/jfs/t9835/131/1905669916/3042823/cb300cef/59e9b116Nd9975bdc.jpg" alt="">
+            <br>
+        </span>
+    </div>
+</section>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.item-img', {
+        autoplay:true,
+        delay: 7000,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        keyboard: {
+            enabled: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction',
+        },
+    });
+    var MAX = 10, MIN = 1;
+    $('.weui-count__decrease').click(function (e) {
+        var $input = $(e.currentTarget).parent().find('.weui-count__number');
+        var number = parseInt($input.val() || "0") - 1
+        if (number < MIN) number = MIN;
+        $input.val(number)
+    });
+    $('.weui-count__increase').click(function (e) {
+        var $input = $(e.currentTarget).parent().find('.weui-count__number');
+        var number = parseInt($input.val() || "0") + 1
+        if (number > MAX) number = MAX;
+        $input.val(number)
+    });
+</script>
+</body>
+</html>

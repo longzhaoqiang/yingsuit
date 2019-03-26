@@ -18,5 +18,9 @@ spring:
       max-idle: 8
       min-idle: 0
     timeout: 5000
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
