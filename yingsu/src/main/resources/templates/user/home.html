@@ -20,32 +20,32 @@
 <footer class="zyw-footer">
     <div class="zyw-container white-bgcolor">
         <div class="weui-tabbar">
-            <a href="index.html" class="weui-tabbar__item">
+            <a href="/" class="weui-tabbar__item">
                 <div class="weui-tabbar__icon">
                     <img src="./img/svg/foot-1.svg" alt="">
                 </div>
                 <p class="weui-tabbar__label">首页</p>
             </a>
-            <a href="class.html" class="weui-tabbar__item">
+            <a href="/catagory" class="weui-tabbar__item">
                 <div class="weui-tabbar__icon">
                     <img src="./img/svg/foot-2.svg" alt="">
                 </div>
                 <p class="weui-tabbar__label">分类</p>
             </a>
-            <a href="find.html" class="weui-tabbar__item">
+            <a href="/find" class="weui-tabbar__item">
                 <div class="weui-tabbar__icon">
                     <img src="./img/svg/foot-3.svg" alt="">
                 </div>
                 <p class="weui-tabbar__label">发现</p>
             </a>
-            <a href="cart.html" class="weui-tabbar__item">
+            <a href="/cart" class="weui-tabbar__item">
                 <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
                 <div class="weui-tabbar__icon">
                     <img src="./img/svg/foot-4.svg" alt="">
                 </div>
                 <p class="weui-tabbar__label">购物车</p>
             </a>
-            <a href="home.html" class="weui-tabbar__item weui-bar__item--on">
+            <a href="/home" class="weui-tabbar__item weui-bar__item--on">
                 <div class="weui-tabbar__icon">
                     <img src="./img/svg/foot-5-1.svg" alt="">
                 </div>
@@ -73,35 +73,35 @@
         </div>
     </div>
     <div class="home-cont weui-cells mt-625">
-        <a class="weui-cell weui-cell_access" href="order.html">
+        <a class="weui-cell weui-cell_access" href="/goods">
             <div class="weui-cell__bd">
-                <p class="choose-text"><img src="img/svg/home-1.svg" alt=""> 全部订单</p>
+                <p class="choose-text"><img src="/img/svg/home-1.svg" alt=""> 全部商品</p>
             </div>
             <div class="weui-cell__ft choose-des">
-                查看所有已购宝贝
+                查看所有商品
             </div>
         </a>
     </div>
     <div class="weui-flex home-order white-bgcolor mb-625">
-        <a href="order.html" class="weui-flex__item">
+        <a href="goods.html" class="weui-flex__item">
             <div class="weui-flex__icon">
                 <img src="./img/svg/home-dfk.svg" alt="">
             </div>
             <p class="weui-flex__label">待付款</p>
         </a>
-        <a href="order.html" class="weui-flex__item">
+        <a href="goods.html" class="weui-flex__item">
             <div class="weui-flex__icon">
                 <img src="./img/svg/home-dfh.svg" alt="">
             </div>
             <p class="weui-flex__label">待发货</p>
         </a>
-        <a href="order.html" class="weui-flex__item">
+        <a href="goods.html" class="weui-flex__item">
             <div class="weui-flex__icon">
                 <img src="./img/svg/home-dsh.svg" alt="">
             </div>
             <p class="weui-flex__label">待收货</p>
         </a>
-        <a href="order.html" class="weui-flex__item">
+        <a href="goods.html" class="weui-flex__item">
             <div class="weui-flex__icon">
                 <img src="./img/svg/home-dpj.svg" alt="">
             </div>
@@ -123,9 +123,9 @@
                 当前可用酷币30酷币
             </div>
         </a>
-        <a class="weui-cell weui-cell_access" href="coupon.html">
+        <a class="weui-cell weui-cell_access" href="/coupon">
             <div class="weui-cell__bd">
-                <p class="choose-text"><img src="img/svg/home-3.svg" alt=""> 优惠券</p>
+                <p class="choose-text"><img src="/img/svg/home-3.svg" alt=""> 优惠券</p>
             </div>
             <div class="weui-cell__ft choose-des">
                 2张
@@ -147,10 +147,18 @@
             <div class="weui-cell__ft choose-des">
             </div>
         </a>
+        <a class="weui-cell weui-cell_access" onclick="loginout()">
+            <div class="weui-cell__bd">
+                <p class="choose-text"><img src="img/svg/home-5.svg" alt=""> 退出登录</p>
+            </div>
+            <div class="weui-cell__ft choose-des">
+            </div>
+        </a>
     </div>
 </section>
 <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/home.js"></script>
 </body>
 </html>

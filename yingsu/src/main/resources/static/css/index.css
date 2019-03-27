@@ -171,6 +171,15 @@ ul, ol, li{list-style-type: none;}
 .index-wares{
     width: 100%;
 }
+.index-intro{
+    margin-left: 40%;
+    margin-top: 10px;
+}
+.intro-font{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 宋体;
+}
 .index-wares .wares-title {
     line-height: 3rem;
     text-align: center;

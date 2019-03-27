@@ -3,10 +3,13 @@ package com.yingsu.newbuss.controller;
 import com.yingsu.newbuss.entity.TUser;
 import com.yingsu.newbuss.entity.base.ResultBase;
 import com.yingsu.newbuss.service.IUserService;
+import com.yingsu.newbuss.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/yingsu/user")
@@ -38,19 +41,20 @@ public class UserControler {
      */
     @RequestMapping("/userLogin")
     @ResponseBody
-    public ResultBase userLogin(String mobile,String password){
+    public ResultBase userLogin(HttpSession session, String mobile, String password){
         ResultBase resultBase = new ResultBase();
         try {
             TUser user = userService.userLogin(mobile,password);
             if (user == null){
                 resultBase.setResultCode("-101");
                 resultBase.setResultMsg("用户名或密码错误，请输入正确的用户名及密码！");
+            } else {
+                session.setAttribute(Constant.USER_INFO,user);
             }
         }catch (Exception e){
             resultBase.setResultCode("-101");
             resultBase.setResultMsg("系统异常！");
         }
-
         return resultBase;
     }
 
@@ -87,7 +91,17 @@ public class UserControler {
      */
     @RequestMapping("/register")
     public String register(){
-        System.out.println("register");
         return "user/register";
+    }
+
+    /**
+     * 退出登录
+     */
+    @RequestMapping("/loginout")
+    @ResponseBody
+    public ResultBase loginOut(HttpSession session){
+        ResultBase resultBase = new ResultBase();
+        session.removeAttribute(Constant.USER_INFO);
+        return resultBase;
     }
 }

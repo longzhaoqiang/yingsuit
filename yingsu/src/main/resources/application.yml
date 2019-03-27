@@ -22,5 +22,12 @@ spring:
     view:
       prefix: /
       suffix: .html
+  thymeleaf:
+    cache: false
+  devtools: #热部署生效
+    restart:
+      enabled: true
+  freemarker: #页面不加载缓存，修改即时生效
+    cache: false
 mybatis:
   mapper-locations: classpath*:mapper/*.xml

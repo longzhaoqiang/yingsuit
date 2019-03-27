@@ -25,40 +25,40 @@
             <i class="fa fa-search" aria-hidden="true"></i>
             <input type="text" placeholder="输入您当前要搜索的商品" class="white-color">
         </div>
-        <div class="head-r"><a href="cart.html"><i class="head-r-svg" aria-hidden="true"></i><i class="head-length">8</i></a></div>
+        <div class="head-r"><a href="/login" id="isLogin">未登录</a></div>
     </div>
 </header>
-<footer class="zyw-footer">
+<footer class="zyw-footer" id="zyx_foot">
     <div class="zyw-container white-bgcolor clearfix">
         <div class="weui-tabbar">
-            <a href="index.html" class="weui-tabbar__item weui-bar__item--on">
+            <a href="/" class="weui-tabbar__item weui-bar__item--on">
                 <div class="weui-tabbar__icon">
-                    <img src="./img/svg/foot-1-1.svg" alt="">
+                    <img src="/img/svg/foot-1-1.svg" alt="">
                 </div>
                 <p class="weui-tabbar__label">首页</p>
             </a>
-            <a href="class.html" class="weui-tabbar__item">
+            <a href="/catagory" class="weui-tabbar__item">
                 <div class="weui-tabbar__icon">
-                    <img src="./img/svg/foot-2.svg" alt="">
+                    <img src="/img/svg/foot-2.svg" alt="">
                 </div>
                 <p class="weui-tabbar__label">分类</p>
             </a>
-            <a href="find.html" class="weui-tabbar__item">
+            <a href="/find" class="weui-tabbar__item">
                 <div class="weui-tabbar__icon">
-                    <img src="./img/svg/foot-3.svg" alt="">
+                    <img src="/img/svg/foot-3.svg" alt="">
                 </div>
                 <p class="weui-tabbar__label">发现</p>
             </a>
-            <a href="cart.html" class="weui-tabbar__item">
+            <a href="/cart" class="weui-tabbar__item">
                 <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
                 <div class="weui-tabbar__icon">
-                    <img src="./img/svg/foot-4.svg" alt="">
+                    <img src="/img/svg/foot-4.svg" alt="">
                 </div>
                 <p class="weui-tabbar__label">购物车</p>
             </a>
-            <a href="home.html" class="weui-tabbar__item">
+            <a href="" class="weui-tabbar__item" onclick="home()">
                 <div class="weui-tabbar__icon">
-                    <img src="./img/svg/foot-5.svg" alt="">
+                    <img src="/img/svg/foot-5.svg" alt="">
                 </div>
                 <p class="weui-tabbar__label">我的</p>
             </a>
@@ -80,7 +80,7 @@
             <div class="weui-flex__item">
                 <a href="javascript:;">
                     <div class="index-class-img">
-                        <img src="./img/yqyl.png" alt="">
+                        <img src="/img/yqyl.png" alt="">
                     </div>
                     <p class="index-class-text">邀请有礼</p>
                 </a>
@@ -88,7 +88,7 @@
             <div class="weui-flex__item">
                 <a href="javascript:;">
                     <div class="index-class-img">
-                        <img src="./img/cjfl.png" alt="">
+                        <img src="/img/cjfl.png" alt="">
                     </div>
                     <p class="index-class-text">春节福利</p>
                 </a>
@@ -96,7 +96,7 @@
             <div class="weui-flex__item">
                 <a href="javascript:;">
                     <div class="index-class-img">
-                        <img src="./img/kbsc.png" alt="">
+                        <img src="/img/kbsc.png" alt="">
                     </div>
                     <p class="index-class-text">酷币商城</p>
                 </a>
@@ -104,7 +104,7 @@
             <div class="weui-flex__item">
                 <a href="javascript:;">
                     <div class="index-class-img">
-                        <img src="./img/sjtx.png" alt="">
+                        <img src="/img/sjtx.png" alt="">
                     </div>
                     <p class="index-class-text">手机通讯</p>
                 </a>
@@ -112,7 +112,7 @@
             <div class="weui-flex__item">
                 <a href="javascript:;">
                     <div class="index-class-img">
-                        <img src="./img/sjpj.png" alt="">
+                        <img src="/img/sjpj.png" alt="">
                     </div>
                     <p class="index-class-text">手机配件</p>
                 </a>
@@ -121,26 +121,23 @@
     </div>
     <div class="index-news">
         <div class="news-cont white-bgcolor">
-            <strong>最新<em>资讯</em>：</strong>
+            <strong>平台<em>号外</em>：</strong>
             <div class="infoBox">
-                <ul class="swiper-wrapper">
-                    <li class="swiper-slide"><a href="#"><span><i>热</i>酷购商城微信版上线啦！</span></a></li>
-                    <li class="swiper-slide"><a href="#"><span>酷购商城微信版上线啦2！</span></a></li>
-                    <li class="swiper-slide"><a href="#"><span>马上就要开学了，书包买买买！</span></a></li>
+                <ul class="swiper-wrapper" style="margin-left: 20px">
+                    <li class="swiper-slide"><a href="#"><span><i>热</i>英速网平台开店免费了！</span></a></li>
+                    <li class="swiper-slide"><a href="#"><span>邀请好友，惊喜无限！</span></a></li>
+                    <li class="swiper-slide"><a href="#"><span>打造个人微店，实现业务飞涨！</span></a></li>
                 </ul>
             </div>
-            <ul>
-                <li><a href=""></a></li>
-            </ul>
-            <a href="" class="news-more">更多</a>
+            <a href="" class="news-more"></a>
         </div>
     </div>
     <div class="index-seckill white-bgcolor">
         <div class="seckill-hd">
-            <span class="seckill-hd-title red-color"><i class="fa fa-clock-o" aria-hidden="true"></i> 限时秒杀</span>
-            <strong>10点场</strong>
+            <span class="seckill-hd-title red-color"><i class="fa fa-clock-o" aria-hidden="true"></i> 限时抢购</span>
+            <strong></strong>
             <div id="time"></div>
-            <div class="seckill-hd-r">秒抢好货 <i class="fa fa-angle-right theme-color" aria-hidden="true"></i></div>
+            <div class="seckill-hd-r">更多商品 <i class="fa fa-angle-right theme-color" aria-hidden="true"></i></div>
         </div>
         <div class="seckill-bd">
             <div class="seckill-wares">
@@ -184,7 +181,7 @@
             </div>
         </div>
     </div>
-    <div class="index-show clearfix">
+    <!--<div class="index-show clearfix">
         <div class="col-sm-12 col-xs-12">
             <a class="sc-gPEVay jZmIRd" href=""><img src="https://s2.juancdn.com/jas/180125/a/0/5a6991598150a12f8a70b929_1080x292.gif" alt=""></a>
         </div>
@@ -203,13 +200,18 @@
         <div class="col-sm-4 col-xs-4">
             <a class="sc-gPEVay jZmIRd" href=""><img src="https://goods1.juancdn.com/jas/180125/1/a/5a699957a9fcf80b4d353e8b_360x304.png?iopcmd=convert&Q=85&dst=png" alt=""></a>
         </div>
-    </div>
+    </div>-->
     <div class="index-wares">
-        <div class="wares-title"><img src="http://gw.alicdn.com/tfs/TB1Aw9JSVXXXXXQXXXXXXXXXXXX-1500-68.png" alt=""></div>
+        <div class="seckill-hd">
+            <div class="index-intro">
+                <span class="seckill-hd-title red-color intro-font">店主带你逛</span>
+            </div>
+            <strong></strong>
+        </div>
         <div class="wares-cont">
             <ul class="clearfix">
                 <li class="col-sm-6 col-xs-6 ware-box">
-                    <a href="item.html">
+                    <a href="/item">
                         <div class="ware-img">
                             <img src="https://m.360buyimg.com/n1/jfs/t15787/353/109633918/16701/5a8390ef/5a27ae6dNc530b5bb.jpg!q70.jpg" alt="">
                             <span class="ware-vip">vip专享</span>
@@ -220,7 +222,7 @@
                     </a>
                 </li>
                 <li class="col-sm-6 col-xs-6 ware-box">
-                    <a href="item.html">
+                    <a href="/item">
                         <div class="ware-img">
                             <img src="https://m.360buyimg.com/mobilecms/s240x240_jfs/t14125/285/900232321/14466/12dfc3a3/5a163dd1Ne09fad4b.jpg!q70.jpg" alt="">
                             <span class="ware-vip">vip专享</span>
@@ -231,7 +233,7 @@
                     </a>
                 </li>
                 <li class="col-sm-6 col-xs-6 ware-box">
-                    <a href="item.html">
+                    <a href="/item">
                         <div class="ware-img">
                             <img src="https://m.360buyimg.com/mobilecms/s240x240_jfs/t15811/137/1521616135/14255/a6150285/5a546fadN096d46b4.jpg!q70.jpg" alt="">
                             <span class="ware-vip">vip专享</span>
@@ -242,7 +244,7 @@
                     </a>
                 </li>
                 <li class="col-sm-6 col-xs-6 ware-box">
-                    <a href="item.html">
+                    <a href="/item">
                         <div class="ware-img">
                             <img src="https://m.360buyimg.com//mobilecms/s276x276_jfs/t5848/205/6830434960/124593/19e83624/596c8b4eN3c8ba6a7.jpg!q70.jpg" alt="">
                             <span class="ware-vip">vip专享</span>
@@ -258,32 +260,8 @@
 </section>
 <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>
-<script src="js/swiper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script type="text/javascript">
-    // 轮播
-    $(document).ready(function () {
-        // 顶部轮播图
-        var mySwiper = new Swiper ('.swiper-container', {
-            // 如果需要分页器
-            autoplay:true,
-            pagination: {
-                el: '.swiper-pagination'
-            }
-        });
-        // 秒杀商品滑动
-        var swiper = new Swiper('.seckill-wares', {
-            slidesPerView: 3.5,
-            spaceBetween: 5,
-            freeMode: true
-        });
-        // 新闻资讯
-        var swiper2 = new Swiper('.infoBox', {
-            autoplay:true,
-            delay: 5000,
-            direction: 'vertical'
-        });
-    })
-</script>
+<script src="/js/swiper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/index.js"></script>
 </body>
 </html>
