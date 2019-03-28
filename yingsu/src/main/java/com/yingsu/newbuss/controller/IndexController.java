@@ -68,6 +68,13 @@ public class IndexController {
         return "user/goods";
     }
 
+    // 页面跳转--添加商品页
+    @RequestMapping("/addGoods")
+    public String addGoods(HttpSession session){
+        Object object = session.getAttribute(Constant.USER_INFO);
+        return "user/addGoods";
+    }
+
     // 页面跳转--登录页面
     @RequestMapping("/login")
     public String login(HttpSession session){
