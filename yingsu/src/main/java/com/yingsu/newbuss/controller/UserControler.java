@@ -59,7 +59,7 @@ public class UserControler {
         }catch (Exception e){
             // 如果有异常，也给返回对象修改返回值
             resultBase.setResultCode("-101");
-            resultBase.setResultMsg("系统异常！");
+            resultBase.setResultMsg("系统异常！"+e);
         }
         // 返回到前端
         return resultBase;
