@@ -273,7 +273,7 @@
             '</div>',
         tActionDelete = '<button type="button" class="kv-file-remove {removeClass}" ' +
             'title="{removeTitle}"{dataUrl}{dataKey}>{removeIcon}</button>\n',
-        tActionUpload = '<button type="button" class="kv-file-upload {uploadClass}" title="{uploadTitle}">' +
+        tActionUpload = '<button type="button" class="" title="{uploadTitle}">' +
             '   {uploadIcon}\n</button>\n',
         tGeneric = '<div class="file-preview-frame{frameClass}" id="{previewId}" data-fileindex="{fileindex}">\n' +
             '   {content}\n' +
@@ -496,7 +496,7 @@
             self.$preview = getElement(options, 'elPreviewImage', self.$container.find('.file-preview-thumbnails'));
             self.$previewStatus = getElement(options, 'elPreviewStatus', self.$container.find('.file-preview-status'));
             self.$errorContainer = getElement(options, 'elErrorContainer',
-                self.$previewContainer.find('.kv-fileinput-error'));
+            self.$previewContainer.find('.kv-fileinput-error'));
             if (!isEmpty(self.msgErrorClass)) {
                 addCss(self.$errorContainer, self.msgErrorClass);
             }
@@ -2120,7 +2120,7 @@
         otherActionButtons: '',
         textEncoding: 'UTF-8',
         ajaxSettings: {},
-        ajaxDeleteSettings: {},
+        // ajaxDeleteSettings: {},
         showAjaxErrorDetails: true
     };
 

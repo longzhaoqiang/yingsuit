@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 
@@ -59,7 +60,7 @@ public class UserControler {
         }catch (Exception e){
             // 如果有异常，也给返回对象修改返回值
             resultBase.setResultCode("-101");
-            resultBase.setResultMsg("系统异常！");
+            resultBase.setResultMsg("系统异常！" + e);
         }
         // 返回到前端
         return resultBase;
@@ -109,6 +110,18 @@ public class UserControler {
     public ResultBase loginOut(HttpSession session){
         ResultBase resultBase = new ResultBase();
         session.removeAttribute(Constant.USER_INFO);
+        return resultBase;
+    }
+
+    /**
+     * 登录时查数据库
+     * @param myfile
+     * @return
+     */
+    @RequestMapping("/uploadFile")
+    @ResponseBody
+    public ResultBase uploadFile(MultipartFile myfile){
+        ResultBase resultBase = new ResultBase();
         return resultBase;
     }
 }

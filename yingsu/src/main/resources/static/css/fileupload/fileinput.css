@@ -117,7 +117,7 @@
 .file-preview-frame {
     display: table;
     margin: 8px;
-    height: 160px;
+    height: 50px;
     border: 1px solid #ddd;
     box-shadow: 1px 1px 5px 0px #a2958a;
     padding: 6px;
@@ -199,7 +199,7 @@
 }
 
 .file-drop-zone {
-    border: 1px dashed #aaa;
+    /*border: 1px dashed #aaa;*/
     border-radius: 4px;
     height: 100%;
     text-align: center;
