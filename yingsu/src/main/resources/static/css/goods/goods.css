@@ -1,0 +1,39 @@
+.peace_1{
+    width: 15%;
+    float: left;
+    margin-top: 5px;
+}
+
+.peace_2{
+    width: 69%;
+    float: left
+}
+
+.bg_1{
+    background-image: url("/img/goods/img5.jpg");
+    background-size:100%;
+}
+
+.addr_1{
+    margin-left: -10%;
+    width: 111%;
+}
+
+.resN_1{
+    width: 30%;
+    float: left;
+    margin-top: 7px;
+}
+
+.w_100{
+    width: 100%;
+}
+
+.w_10{
+    width: 10%;
+}
+
+.w_50{
+    width: 50%;
+    float: left;
+}
