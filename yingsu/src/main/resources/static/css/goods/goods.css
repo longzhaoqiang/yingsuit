@@ -9,6 +9,16 @@
     float: left
 }
 
+.xq_1{
+    margin-left: 15px;
+    width: 92%;
+    height: 150px;
+}
+
+.co_956{
+    color: #956bff;
+}
+
 .bg_1{
     background-image: url("/img/goods/img5.jpg");
     background-size:100%;
@@ -25,8 +35,8 @@
     margin-top: 7px;
 }
 
-.w_100{
-    width: 100%;
+.w_98{
+    width: 98%;
 }
 
 .w_10{

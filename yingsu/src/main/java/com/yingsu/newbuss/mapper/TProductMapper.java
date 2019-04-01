@@ -3,8 +3,6 @@ package com.yingsu.newbuss.mapper;
 import com.yingsu.newbuss.entity.TProduct;
 
 public interface TProductMapper {
-    int deleteByPrimaryKey(Integer id);
-
     int insert(TProduct record);
 
     int insertSelective(TProduct record);

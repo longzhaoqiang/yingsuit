@@ -5,10 +5,16 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
     <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="produce_num" jdbcType="INTEGER" property="produceNum" />
+    <result column="buss_address" jdbcType="VARCHAR" property="bussAddress" />
+    <result column="send_range" jdbcType="VARCHAR" property="sendRange" />
+    <result column="produce_details" jdbcType="VARCHAR" property="produceDetails" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, product_name, commodity_id, create_time
+    id, product_name, commodity_id, price, produce_num, buss_address, send_range, produce_details, 
+    create_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -22,9 +28,13 @@
   </delete>
   <insert id="insert" parameterType="com.yingsu.newbuss.entity.TProduct">
     insert into t_product (id, product_name, commodity_id, 
-      create_time)
+      price, product_num, buss_address,
+      send_range, product_details, create_time
+      )
     values (#{id,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{commodityId,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{price,jdbcType=DECIMAL}, #{productNum,jdbcType=INTEGER}, #{bussAddress,jdbcType=VARCHAR},
+      #{sendRange,jdbcType=VARCHAR}, #{productDetails,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yingsu.newbuss.entity.TProduct">
     insert into t_product
@@ -37,6 +47,21 @@
       </if>
       <if test="commodityId != null">
         commodity_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="productNum != null">
+        product_num,
+      </if>
+      <if test="bussAddress != null">
+        buss_address,
+      </if>
+      <if test="sendRange != null">
+        send_range,
+      </if>
+      <if test="productDetails != null">
+        product_details,
       </if>
       <if test="createTime != null">
         create_time,
@@ -52,6 +77,21 @@
       <if test="commodityId != null">
         #{commodityId,jdbcType=INTEGER},
       </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="productNum != null">
+        #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="bussAddress != null">
+        #{bussAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sendRange != null">
+        #{sendRange,jdbcType=VARCHAR},
+      </if>
+      <if test="productDetails != null">
+        #{productDetails,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -66,6 +106,21 @@
       <if test="commodityId != null">
         commodity_id = #{commodityId,jdbcType=INTEGER},
       </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="productNum != null">
+        product_num = #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="bussAddress != null">
+        buss_address = #{bussAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sendRange != null">
+        send_range = #{sendRange,jdbcType=VARCHAR},
+      </if>
+      <if test="productDetails != null">
+        product_details = #{productDetails,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -76,6 +131,11 @@
     update t_product
     set product_name = #{productName,jdbcType=VARCHAR},
       commodity_id = #{commodityId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      product_num = #{productNum,jdbcType=INTEGER},
+      buss_address = #{bussAddress,jdbcType=VARCHAR},
+      send_range = #{sendRange,jdbcType=VARCHAR},
+      product_details = #{productDetails,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
