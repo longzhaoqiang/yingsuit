@@ -27,11 +27,24 @@ public class BussesserController {
     public ResultBase getBussesser(Integer bussesserId){
         TBussesser tBussesser = null;
         ResultBase resultBase = new ResultBase();
-        redisService.set("1111001","100",6000L);
-        String s = (String) redisService.get("1111001");
+        // 设置一个键
+        String key = "1111111";
+        // redis
+        // 查看redis是否有key="1111111"这个key对应的值
+        boolean flag = redisService.exists(key);
         try {
-            tBussesser = bussesserService.getBussersser(bussesserId);
-            resultBase.setObject(tBussesser);
+            // 如果flag是true(reids有值)
+            if(flag){
+                // 到redis取（通过get方法把key传进去）
+                String s = (String) redisService.get(key);
+            } else {
+                // 如果没有，从数据库查
+                tBussesser = bussesserService.getBussersser(bussesserId);
+                // 查到后放到rides(调用set方法，set(key,value,expierTime),对应的是键，值，过期时间)
+                // 设置完后，下次程序从上面走上来就调exists()方法查就有了
+                redisService.set(key, tBussesser, 6000L);
+                resultBase.setObject(tBussesser);
+            }
         }catch (Exception e){
             resultBase.setResultCode("100");
             resultBase.setResultMsg("系统异常" + e);
