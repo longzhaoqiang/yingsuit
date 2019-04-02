@@ -4,11 +4,15 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class TProduct {
-    private Integer id;
+    private String id;
+
+    private String productId;
 
     private String productName;
 
     private Integer commodityId;
+
+    private Integer pictrueId;
 
     private BigDecimal price;
 
@@ -22,12 +26,20 @@ public class TProduct {
 
     private Date createTime = new Date();
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -44,6 +56,14 @@ public class TProduct {
 
     public void setCommodityId(Integer commodityId) {
         this.commodityId = commodityId;
+    }
+
+    public Integer getPictrueId() {
+        return pictrueId;
+    }
+
+    public void setPictrueId(Integer pictrueId) {
+        this.pictrueId = pictrueId;
     }
 
     public BigDecimal getPrice() {

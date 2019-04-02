@@ -2,9 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yingsu.newbuss.mapper.TProductMapper">
   <resultMap id="BaseResultMap" type="com.yingsu.newbuss.entity.TProduct">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
     <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="pictrue_id" jdbcType="INTEGER" property="pictrueId" />
     <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="produce_num" jdbcType="INTEGER" property="produceNum" />
     <result column="buss_address" jdbcType="VARCHAR" property="bussAddress" />
@@ -13,29 +14,27 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, product_name, commodity_id, price, produce_num, buss_address, send_range, produce_details, 
+    id, product_name, commodity_id,pictrue_id, price, produce_num, buss_address, send_range, produce_details,
     create_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_product
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_product
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+
   <insert id="insert" parameterType="com.yingsu.newbuss.entity.TProduct">
-    insert into t_product (id, product_name, commodity_id, 
+    insert into t_product (id, product_name, commodity_id, pictrue_id,
       price, product_num, buss_address,
       send_range, product_details, create_time
       )
-    values (#{id,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{commodityId,jdbcType=INTEGER}, 
-      #{price,jdbcType=DECIMAL}, #{productNum,jdbcType=INTEGER}, #{bussAddress,jdbcType=VARCHAR},
+    values (#{id,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{commodityId,jdbcType=INTEGER},
+      #{pictrueId,jdbcType=INTEGER},#{price,jdbcType=DECIMAL}, #{productNum,jdbcType=INTEGER}, #{bussAddress,jdbcType=VARCHAR},
       #{sendRange,jdbcType=VARCHAR}, #{productDetails,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
+
   <insert id="insertSelective" parameterType="com.yingsu.newbuss.entity.TProduct">
     insert into t_product
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -47,6 +46,9 @@
       </if>
       <if test="commodityId != null">
         commodity_id,
+      </if>
+      <if test="pictrueId != null">
+        pictrue_id,
       </if>
       <if test="price != null">
         price,
@@ -69,13 +71,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=VARCHAR},
       </if>
       <if test="productName != null">
         #{productName,jdbcType=VARCHAR},
       </if>
       <if test="commodityId != null">
         #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="pictrueId != null">
+        #{pictrueId,jdbcType=INTEGER},
       </if>
       <if test="price != null">
         #{price,jdbcType=DECIMAL},
@@ -97,6 +102,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.yingsu.newbuss.entity.TProduct">
     update t_product
     <set>
@@ -105,6 +111,9 @@
       </if>
       <if test="commodityId != null">
         commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="pictrueId != null">
+        pictrue_id = #{pictrueId,jdbcType=INTEGER},
       </if>
       <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
@@ -125,18 +134,19 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yingsu.newbuss.entity.TProduct">
     update t_product
     set product_name = #{productName,jdbcType=VARCHAR},
       commodity_id = #{commodityId,jdbcType=INTEGER},
+      pictrue_id = #{pictrueId,jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
       product_num = #{productNum,jdbcType=INTEGER},
       buss_address = #{bussAddress,jdbcType=VARCHAR},
       send_range = #{sendRange,jdbcType=VARCHAR},
       product_details = #{productDetails,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

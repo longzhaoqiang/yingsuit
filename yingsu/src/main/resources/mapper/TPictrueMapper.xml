@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yingsu.newbuss.mapper.TPictrueMapper">
+  <resultMap id="BaseResultMap" type="com.yingsu.newbuss.entity.TPictrue">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pictrue_url" jdbcType="VARCHAR" property="pictrueUrl" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="pictrue_type" jdbcType="INTEGER" property="pictrueType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pictrue_url, product_id, pictrue_type, create_time
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_pictrue
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.yingsu.newbuss.entity.TPictrue">
+    insert into t_pictrue
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pictrueUrl != null">
+        pictrue_url,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="pictrueType != null">
+        pictrue_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pictrueUrl != null">
+        #{pictrueUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="pictrueType != null">
+        #{pictrueType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.yingsu.newbuss.entity.TPictrue">
+    update t_pictrue
+    <set>
+      <if test="pictrueUrl != null">
+        pictrue_url = #{pictrueUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="pictrueType != null">
+        pictrue_type = #{pictrueType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -33,7 +33,7 @@ public class IndexController {
         return "user/find";
     }
 
-    // 页面跳转
+    // 页面跳转-购物车
     @RequestMapping("/cart")
     public String cart(HttpSession session){
         Object object = session.getAttribute(Constant.USER_INFO);
@@ -73,6 +73,13 @@ public class IndexController {
     public String addGoods(HttpSession session){
         Object object = session.getAttribute(Constant.USER_INFO);
         return "user/addGoods";
+    }
+
+    // 页面跳转--商家详情页
+    @RequestMapping("/bussesser")
+    public String bussesser(HttpSession session){
+        Object object = session.getAttribute(Constant.USER_INFO);
+        return "user/bussess";
     }
 
     // 页面跳转--登录页面

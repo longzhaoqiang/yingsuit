@@ -1,13 +1,12 @@
 $(function () {
     // 多图片上传
     initFileInput("input-id");
-    var win_id = '<%=win_id%>';
-    $("#colseid").click(function() {
-        if(win_id){
-            parent.Ext.getCmp(win_id).close();
-        }
-    });
 })
+
+// 是否上传图片标记
+var flag = false;
+// 商品id
+var productId = "";
 
 // 多图片上传初始化
 function initFileInput(ctrlName) {
@@ -41,21 +40,41 @@ function initFileInput(ctrlName) {
     }).on('filepreupload', function(event, data, previewId, index) {     //上传中
         var form = data.form, files = data.files, extra = data.extra,
             response = data.response, reader = data.reader;
-        console.log('文件正在上传');
+        console.log('图片正在上传');
     }).on("fileuploaded", function (event, data, previewId, index) {    //一个文件上传成功
-        console.log('文件上传成功！'+data.id);
+        // 返回商品id
+        productId = data.response.resultCode;
+        $("#productId").val(productId);
+        flag = true;
     }).on('fileerror', function(event, data, msg) {  //一个文件上传失败
-        console.log('文件上传失败！'+data.id);
+        console.log('图片上传失败！'+data.id);
     })
 }
 
+// 保存提交
 function commit() {
+    var productId = $("#productId").val();
     var productName = $("#productName").val();
     var price = $("#price").val();
     var productNum = $("#productNum").val();
     var bussAddress = $("#bussAddress").val();
-    var sendRange = $("#sendRange").val();
-    var productDetails = $("#productDetails").val();
+    if (!flag){
+        alert("为了店面美观请上传图片！");
+        return false;
+    }
+    if (productName == ""){
+        alert("商品名称不能为空");
+        return false;
+    } else if (price == ""){
+        alert("请输入价格");
+        return false;
+    } else if (productNum == ""){
+        alert("库存不能为空");
+        return false;
+    } else if (bussAddress == ""){
+        alert("请输入商家地址");
+        return false;
+    }
     $.ajax({
         //几个参数需要注意一下
         type: "POST",//方法类型
@@ -63,11 +82,13 @@ function commit() {
         url: "/product/add" ,//url
         data: $('#productForm').serialize(),
         success: function (result) {
-            console.log(result);//打印服务端返回的数据(调试用)
-            if (result.resultCode == 200) {
-                alert("SUCCESS");
+            var code = result.resultCode;
+            var msg = result.resultMsg;
+            if (code == "1"){
+                window.location.href = "/home";
+            } else {
+                alert(msg);
             }
-            ;
         },
         error : function() {
             alert("异常！");

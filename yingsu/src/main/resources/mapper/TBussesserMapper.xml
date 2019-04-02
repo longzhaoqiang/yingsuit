@@ -6,26 +6,25 @@
     <result column="bussesser_name" jdbcType="VARCHAR" property="bussesserName" />
     <result column="community_id" jdbcType="INTEGER" property="communityId" />
     <result column="catagory_id" jdbcType="INTEGER" property="catagoryId" />
+    <result column="buss_address" jdbcType="VARCHAR" property="bussAddress" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, bussesser_name, community_id, catagory_id, create_time
+    id, bussesser_name, community_id, catagory_id, buss_address, create_time
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_bussesser
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_bussesser
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+
   <insert id="insert" parameterType="com.yingsu.newbuss.entity.TBussesser">
     insert into t_bussesser (id, bussesser_name, community_id, 
-      catagory_id, create_time)
+      catagory_id, buss_address, create_time)
     values (#{id,jdbcType=INTEGER}, #{bussesserName,jdbcType=VARCHAR}, #{communityId,jdbcType=INTEGER}, 
-      #{catagoryId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+      #{catagoryId,jdbcType=INTEGER}, #{bussAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.yingsu.newbuss.entity.TBussesser">
     insert into t_bussesser
@@ -41,6 +40,9 @@
       </if>
       <if test="catagoryId != null">
         catagory_id,
+      </if>
+      <if test="bussAddress != null">
+        buss_address,
       </if>
       <if test="createTime != null">
         create_time,
@@ -59,6 +61,9 @@
       <if test="catagoryId != null">
         #{catagoryId,jdbcType=INTEGER},
       </if>
+      <if test="bussAddress != null">
+        #{bussAddress,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -76,6 +81,9 @@
       <if test="catagoryId != null">
         catagory_id = #{catagoryId,jdbcType=INTEGER},
       </if>
+      <if test="bussAddress != null">
+        buss_address = #{bussAddress,jdbcType=VARCHAR},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -87,6 +95,7 @@
     set bussesser_name = #{bussesserName,jdbcType=VARCHAR},
       community_id = #{communityId,jdbcType=INTEGER},
       catagory_id = #{catagoryId,jdbcType=INTEGER},
+      buss_address = #{bussAddress,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

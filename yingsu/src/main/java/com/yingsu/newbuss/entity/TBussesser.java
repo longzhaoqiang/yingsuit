@@ -11,6 +11,8 @@ public class TBussesser {
 
     private Integer catagoryId;
 
+    private String bussAddress;
+
     private Date createTime;
 
     public Integer getId() {
@@ -43,6 +45,14 @@ public class TBussesser {
 
     public void setCatagoryId(Integer catagoryId) {
         this.catagoryId = catagoryId;
+    }
+
+    public String getBussAddress() {
+        return bussAddress;
+    }
+
+    public void setBussAddress(String bussAddress) {
+        this.bussAddress = bussAddress;
     }
 
     public Date getCreateTime() {

@@ -2,6 +2,7 @@ package com.yingsu.newbuss.controller;
 
 import com.sun.deploy.net.HttpResponse;
 import com.yingsu.newbuss.entity.TBussesser;
+import com.yingsu.newbuss.entity.TVocation;
 import com.yingsu.newbuss.entity.base.ResultBase;
 import com.yingsu.newbuss.service.IBussesserService;
 import com.yingsu.newbuss.util.RedisService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 @RequestMapping("/yingsu/buss")
@@ -20,6 +22,7 @@ public class BussesserController {
 
     @Autowired
     private IBussesserService bussesserService;
+
     @Autowired
     private RedisService redisService;
 
@@ -47,9 +50,37 @@ public class BussesserController {
             }
         }catch (Exception e){
             resultBase.setResultCode("100");
-            resultBase.setResultMsg("系统异常" + e);
+            resultBase.setResultMsg("系统异常");
         }
 
+        return resultBase;
+    }
+
+    // 获取分类信息列表
+    @RequestMapping("/getVacatList")
+    @ResponseBody
+    public ResultBase getVacatList(){
+        ResultBase resultBase = new ResultBase();
+        try {
+            resultBase = bussesserService.getVacatList();
+        }catch (Exception e){
+            resultBase.setResultCode("-100");
+            resultBase.setResultMsg("系统异常");
+        }
+        return resultBase;
+    }
+
+    // 添加商家
+    @RequestMapping("/addbuss")
+    @ResponseBody
+    public ResultBase addbuss(TBussesser bussesser){
+        ResultBase resultBase = new ResultBase();
+        try {
+            // resultBase = bussesserService.getVacatList();
+        }catch (Exception e){
+            resultBase.setResultCode("-100");
+            resultBase.setResultMsg("系统异常");
+        }
         return resultBase;
     }
 
