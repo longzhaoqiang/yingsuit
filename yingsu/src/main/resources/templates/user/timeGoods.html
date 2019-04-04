@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>限时商品</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/goods/weui.min.css">
+    <link rel="stylesheet" href="/css/goods/jquery-weui.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/order.css">
+    <link rel="stylesheet" href="/css/goods.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrapSwitch.css">
+</head>
+<body>
+<header class="zyw-header">
+    <div class="zyw-container white-color">
+        <div class="head-l"><a href="javascript:window.history.back(-1)" target="_self"><img src="img/svg/head-return.svg" alt=""></a></div>
+        <h1>限时商品</h1>
+        <div class="head-r"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></div>
+    </div>
+</header>
+<section class="zyw-container">
+    <div style="height: 30px">&nbsp;</div>
+    <div class="weui-tab">
+        <div class="weui-tab__bd">
+            <div id="time_goods" class="weui-tab__bd-item weui-tab__bd-item&#45;&#45;active"></div>
+        </div>
+    </div>
+</section>
+<script src="/js/jquery.min.js"></script>
+<script type="application/javascript">
+    $(function () {
+        // 检查是否登录
+        var url = "/yingsu/user/checkLogin";
+        $.ajax({
+            type: "POST",
+            url: url,
+            success: function (data) {
+                var code = data.resultCode;
+                var msg = data.resultMsg;
+                if (code == "-12"){
+                    var flag = confirm(msg);
+                    if (flag){
+                        window.location.href = "/login";
+                    }
+                }
+            }
+        })
+
+        getAll();
+    })
+
+    // 获取所有商品
+    function getAll() {
+        var url = "/product/getList";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {"timeStatus" : 1},
+            success: function (data) {
+                var str = "";
+                var result = data.object;
+                for (var i = 0;i<result.length;i++){
+                    str += "<div class=\"order-group\"><div class=\"order-group-item clearfix\"><div class=\"order-item-box\">"+
+                        "<div class=\"media\"><a href=\"\" class=\"pull-left\">"+
+                        "<img src=\"https://m.360buyimg.com/n12/jfs/t12352/88/127708421/67468/90baaf73/5a04172aN29f845bf.jpg!q70.jpg\" class=\"media-object order-item-img\">"+
+                        "</a><div class=\"media-body\"><div class=\"order-item-info\">"+
+                        "<h5 class=\"order-item-title\">"+data.object[i].productName+"</h5>"+
+                        "<p class=\"order-item-fare\">可送范围："+data.object[i].sendRange+"</p><div class=\"pull-right text-right order-item-r\">"+
+                        "<p class=\"order-item-prince\">￥"+data.object[i].price+"</p><p class=\"order-item-length\">x "+data.object[i].productNum+"</p></div></div></div></div></div>"+
+                        "<div class=\"order-item-btn pull-right\"><button class=\"btn btn-sm btn-default\">限时商品</button>"+
+                        "<button class=\"btn btn-sm btn-primary theme-bdcolor theme-bgcolor\">首页展示</button></div></div>"+
+                        "<HR align=center width=300 color=#987cb9 SIZE=1 style=\"width: 100%;margin-bottom: 20px;margin-top: 1px\"></div>";
+                }
+                $("#time_goods").append(str);
+            }
+        })
+    }
+</script>
+</body>
+</html>

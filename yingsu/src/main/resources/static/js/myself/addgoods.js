@@ -1,4 +1,5 @@
 $(function () {
+    checkLogin();
     // 多图片上传
     initFileInput("input-id");
 })
@@ -85,7 +86,7 @@ function commit() {
             var code = result.resultCode;
             var msg = result.resultMsg;
             if (code == "1"){
-                window.location.href = "/home";
+                window.location.href = "/goods";
             } else {
                 alert(msg);
             }
@@ -94,4 +95,24 @@ function commit() {
             alert("异常！");
         }
     });
+}
+
+// 检查是否登录
+function checkLogin() {
+    // 检查是否登录
+    var url = "/yingsu/user/checkLogin";
+    $.ajax({
+        type: "POST",
+        url: url,
+        success: function (data) {
+            var code = data.resultCode;
+            var msg = data.resultMsg;
+            if (code == "-12"){
+                var flag = confirm(msg);
+                if (flag){
+                    window.location.href = "/login";
+                }
+            }
+        }
+    })
 }

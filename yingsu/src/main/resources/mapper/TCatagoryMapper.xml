@@ -3,24 +3,31 @@
 <mapper namespace="com.yingsu.newbuss.mapper.TCatagoryMapper">
   <resultMap id="BaseResultMap" type="com.yingsu.newbuss.entity.TCatagory">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
+    <result column="catagory_name" jdbcType="VARCHAR" property="catagoryName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, commodity_name
+    id, catagory_name, create_time
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_catagory
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_catagory
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+
+  <select id="findCatagoryList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_catagory
+  </select>
+
   <insert id="insert" parameterType="com.yingsu.newbuss.entity.TCatagory">
-    insert into t_catagory (id, commodity_name)
-    values (#{id,jdbcType=INTEGER}, #{commodityName,jdbcType=VARCHAR})
+    insert into t_catagory (id, catagory_name, create_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{catagoryName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.yingsu.newbuss.entity.TCatagory">
     insert into t_catagory
@@ -28,31 +35,41 @@
       <if test="id != null">
         id,
       </if>
-      <if test="commodityName != null">
-        commodity_name,
+      <if test="catagoryName != null">
+        catagory_name,
+      </if>
+      <if test="createTime != null">
+        create_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="commodityName != null">
-        #{commodityName,jdbcType=VARCHAR},
+      <if test="catagoryName != null">
+        #{catagoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.yingsu.newbuss.entity.TCatagory">
     update t_catagory
     <set>
-      <if test="commodityName != null">
-        commodity_name = #{commodityName,jdbcType=VARCHAR},
+      <if test="vocationName != null">
+        catagory_name = #{catagoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yingsu.newbuss.entity.TCatagory">
     update t_catagory
-    set commodity_name = #{commodityName,jdbcType=VARCHAR}
+    set catagory_name = #{catagoryName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

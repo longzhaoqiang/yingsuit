@@ -3,14 +3,16 @@
 <mapper namespace="com.yingsu.newbuss.mapper.TBussesserMapper">
   <resultMap id="BaseResultMap" type="com.yingsu.newbuss.entity.TBussesser">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
     <result column="bussesser_name" jdbcType="VARCHAR" property="bussesserName" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="community_id" jdbcType="INTEGER" property="communityId" />
     <result column="catagory_id" jdbcType="INTEGER" property="catagoryId" />
     <result column="buss_address" jdbcType="VARCHAR" property="bussAddress" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, bussesser_name, community_id, catagory_id, buss_address, create_time
+    id, mobile, bussesser_name, user_id, community_id, catagory_id, buss_address, create_time
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -20,20 +22,36 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+  <!-- 通过用户名查找商家信息 -->
+  <select id="selectByUid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_bussesser
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+
   <insert id="insert" parameterType="com.yingsu.newbuss.entity.TBussesser">
-    insert into t_bussesser (id, bussesser_name, community_id, 
+    insert into t_bussesser (id, mobile, bussesser_name, user_id, community_id,
       catagory_id, buss_address, create_time)
-    values (#{id,jdbcType=INTEGER}, #{bussesserName,jdbcType=VARCHAR}, #{communityId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{mobile,jdbcType=VARCHAR}, #{bussesserName,jdbcType=VARCHAR},
+      #{userId,jdbcType=INTEGER}, #{communityId,jdbcType=INTEGER},
       #{catagoryId,jdbcType=INTEGER}, #{bussAddress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
+
   <insert id="insertSelective" parameterType="com.yingsu.newbuss.entity.TBussesser">
     insert into t_bussesser
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
       <if test="bussesserName != null">
         bussesser_name,
+      </if>
+      <if test="userId != null">
+        user_id,
       </if>
       <if test="communityId != null">
         community_id,
@@ -52,8 +70,14 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
       <if test="bussesserName != null">
         #{bussesserName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
       </if>
       <if test="communityId != null">
         #{communityId,jdbcType=INTEGER},
@@ -69,11 +93,18 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.yingsu.newbuss.entity.TBussesser">
     update t_bussesser
     <set>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
       <if test="bussesserName != null">
         bussesser_name = #{bussesserName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
       <if test="communityId != null">
         community_id = #{communityId,jdbcType=INTEGER},
@@ -90,9 +121,13 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.yingsu.newbuss.entity.TBussesser">
     update t_bussesser
-    set bussesser_name = #{bussesserName,jdbcType=VARCHAR},
+    set
+      mobile = #{mobile,jdbcType=VARCHAR},
+      bussesser_name = #{bussesserName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
       community_id = #{communityId,jdbcType=INTEGER},
       catagory_id = #{catagoryId,jdbcType=INTEGER},
       buss_address = #{bussAddress,jdbcType=INTEGER},

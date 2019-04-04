@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>商家信息</title>
+    <title>我的信息</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/goods/weui.min.css" rel="stylesheet">
     <link href="/css/goods/jquery-weui.min.css" rel="stylesheet">
@@ -16,45 +16,49 @@
 <header class="zyw-header">
     <div class="zyw-container white-color">
         <div class="head-l"><a href="javascript:window.history.back(-1)" target="_self"><img src="/img/svg/head-return.svg" alt=""></a></div>
-        <h1>商家信息注册</h1>
+        <h1>我的信息</h1>
     </div>
 </header>
 <section class="zyw-container">
     <form id="bussForm" method="post">
         <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label">联系方式</label></div>
+            <div class="weui-cell__hd"><label class="weui-label_1">用户名</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" id="mobile" name="mobile" pattern="[0-9]*" placeholder="请输入手机号">
+                <span>王二小</span>
             </div>
         </div>
         <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label">商家名称</label></div>
+            <div class="weui-cell__hd"><label class="weui-label_1">密码</label></div>
+            <a href=""><span>修改密码</span></a>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label_1">联系方式</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" id="bussesserName" name="bussesserName" pattern="[0-9]*" placeholder="请输入商家名称，让大家更好的知道您">
+                <span>13818572040</span>
             </div>
         </div>
         <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label">所属行业</label></div>
+            <div class="weui-cell__hd"><label class="weui-label_1">商家名称</label></div>
+            <div class="weui-cell__bd">
+                <span>英速百货</span>
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label_1">所属行业</label></div>
             <div class="weui-cell__bd">
                 <div class="btn-group dropdown" id="dropdown">
-                    <select class="form-control" id="catagoryId" name="catagoryId"></select>
+                    <span>批发百货</span>
                 </div>
             </div>
             <div class="col-sm-4 tips"></div>
         </div>
         <div class="weui-cell">
-            <div class="weui-cell__hd"><label class="weui-label">所在地址</label></div>
+            <div class="weui-cell__hd"><label class="weui-label_1">所在地址</label></div>
             <div class="weui-cell__bd">
-                <input class="weui-input" id="bussAddress" name="bussAddress" placeholder="输入你商店所在的位置">
+                <span>吉首市华商国际城</span>
             </div>
         </div>
-        <label for="weuiAgree" class="weui-agree">
-            <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
-            <span class="weui-agree__text">
-            阅读并同意<a href="javascript:void(0);">《相关条款》</a>
-          </span>
-        </label>
-        <div class="login-btn"><a href="javascript:;" class="weui-btn weui-btn_warn theme-bgcolor" onclick="registerBuss()">开通</a></div>
+        <div class="login-btn"><a href="javascript:;" class="weui-btn weui-btn_warn theme-bgcolor" onclick="registerBuss()">修改</a></div>
     </form>
 </section>
 

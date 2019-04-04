@@ -4,19 +4,24 @@
   <resultMap id="BaseResultMap" type="com.yingsu.newbuss.entity.TProduct">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="buss_id" jdbcType="INTEGER" property="bussId" />
     <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
-    <result column="pictrue_id" jdbcType="INTEGER" property="pictrueId" />
     <result column="price" jdbcType="DECIMAL" property="price" />
-    <result column="produce_num" jdbcType="INTEGER" property="produceNum" />
+    <result column="product_num" jdbcType="INTEGER" property="productNum" />
     <result column="buss_address" jdbcType="VARCHAR" property="bussAddress" />
     <result column="send_range" jdbcType="VARCHAR" property="sendRange" />
-    <result column="produce_details" jdbcType="VARCHAR" property="produceDetails" />
+    <result column="product_details" jdbcType="VARCHAR" property="productDetails" />
+    <result column="is_timegoods" jdbcType="INTEGER" property="isTimegoods" />
+    <result column="is_use" jdbcType="INTEGER" property="isUse" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
+
   <sql id="Base_Column_List">
-    id, product_name, commodity_id,pictrue_id, price, produce_num, buss_address, send_range, produce_details,
+    id, product_name, buss_id, commodity_id, price, product_num, buss_address, send_range, product_details,is_timegoods, is_use, is_delete,
     create_time
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -24,14 +29,41 @@
     where id = #{id,jdbcType=VARCHAR}
   </select>
 
+  <!-- 根据商品状态查找 -->
+  <select id="selectListByIsUse" resultType="com.yingsu.newbuss.entity.TProduct" parameterType="java.lang.Integer">
+    SELECT
+      id AS id,
+      product_name AS productName,
+      price AS price,
+      product_num AS productNum,
+      buss_address AS bussAddress,
+      send_range AS sendRange,
+      create_time AS createTime
+    FROM t_product
+    WHERE 1 = 1 AND buss_id = #{bussId}
+    <!-- 全部null 首页(有用+非限时) 限时（is_timegoods=1） 是否上架（is_use=+-1 -->
+     <if test="productStatus != null">
+       AND is_use = #{productStatus} AND is_timegoods = -1
+     </if>
+     <if test="timeStatus != null">
+       AND is_timegoods = #{timeStatus} AND is_use = 1
+     </if>
+    <if test="isUse != null">
+      AND is_use = #{isUse}
+    </if>
+    AND is_delete = 1
+     ORDER BY create_time DESC
+  </select>
+
   <insert id="insert" parameterType="com.yingsu.newbuss.entity.TProduct">
-    insert into t_product (id, product_name, commodity_id, pictrue_id,
+    insert into t_product (id, product_name, buss_id, commodity_id,
       price, product_num, buss_address,
-      send_range, product_details, create_time
+      send_range, product_details, is_timegoods, is_use, is_delete, create_time
       )
-    values (#{id,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{commodityId,jdbcType=INTEGER},
-      #{pictrueId,jdbcType=INTEGER},#{price,jdbcType=DECIMAL}, #{productNum,jdbcType=INTEGER}, #{bussAddress,jdbcType=VARCHAR},
-      #{sendRange,jdbcType=VARCHAR}, #{productDetails,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
+    values (#{id,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{buss_id,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER},
+      #{price,jdbcType=DECIMAL}, #{productNum,jdbcType=INTEGER}, #{bussAddress,jdbcType=VARCHAR},
+      #{sendRange,jdbcType=VARCHAR}, #{productDetails,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER},
+      #{isTimegoods,jdbcType=INTEGER},#{isUse,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP}
       )
   </insert>
 
@@ -44,11 +76,11 @@
       <if test="productName != null">
         product_name,
       </if>
+      <if test="bussId != null">
+        buss_id,
+      </if>
       <if test="commodityId != null">
         commodity_id,
-      </if>
-      <if test="pictrueId != null">
-        pictrue_id,
       </if>
       <if test="price != null">
         price,
@@ -65,8 +97,14 @@
       <if test="productDetails != null">
         product_details,
       </if>
-      <if test="createTime != null">
-        create_time,
+      <if test="isTimegoods != null">
+        is_timegoods,
+      </if>
+      <if test="isUse != null">
+        is_use,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -76,11 +114,11 @@
       <if test="productName != null">
         #{productName,jdbcType=VARCHAR},
       </if>
+      <if test="bussId != null">
+        #{bussId,jdbcType=INTEGER},
+      </if>
       <if test="commodityId != null">
         #{commodityId,jdbcType=INTEGER},
-      </if>
-      <if test="pictrueId != null">
-        #{pictrueId,jdbcType=INTEGER},
       </if>
       <if test="price != null">
         #{price,jdbcType=DECIMAL},
@@ -97,8 +135,14 @@
       <if test="productDetails != null">
         #{productDetails,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="isTimegoods != null">
+        #{isTimegoods,jdbcType=INTEGER},
+      </if>
+      <if test="isUse != null">
+        #{isUse,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -109,11 +153,11 @@
       <if test="productName != null">
         product_name = #{productName,jdbcType=VARCHAR},
       </if>
+      <if test="bussId != null">
+        buss_id = #{bussId,jdbcType=INTEGER},
+      </if>
       <if test="commodityId != null">
         commodity_id = #{commodityId,jdbcType=INTEGER},
-      </if>
-      <if test="pictrueId != null">
-        pictrue_id = #{pictrueId,jdbcType=INTEGER},
       </if>
       <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
@@ -130,6 +174,15 @@
       <if test="productDetails != null">
         product_details = #{productDetails,jdbcType=VARCHAR},
       </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="isTimegoods != null">
+        is_timegoods = #{isTimegoods,jdbcType=INTEGER},
+      </if>
+      <if test="isUse != null">
+        is_use = #{isUse,jdbcType=INTEGER},
+      </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
@@ -139,13 +192,16 @@
   <update id="updateByPrimaryKey" parameterType="com.yingsu.newbuss.entity.TProduct">
     update t_product
     set product_name = #{productName,jdbcType=VARCHAR},
+      buss_id = #{bussId,jdbcType=INTEGER},
       commodity_id = #{commodityId,jdbcType=INTEGER},
-      pictrue_id = #{pictrueId,jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
       product_num = #{productNum,jdbcType=INTEGER},
       buss_address = #{bussAddress,jdbcType=VARCHAR},
       send_range = #{sendRange,jdbcType=VARCHAR},
       product_details = #{productDetails,jdbcType=VARCHAR},
+      is_timegoods = #{isTimegoods,jdbcType=INTEGER},
+      is_use = #{isUse,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>

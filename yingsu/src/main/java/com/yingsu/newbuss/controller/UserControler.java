@@ -1,14 +1,19 @@
 package com.yingsu.newbuss.controller;
 
+import com.yingsu.newbuss.entity.TBussesser;
 import com.yingsu.newbuss.entity.TUser;
 import com.yingsu.newbuss.entity.base.ResultBase;
+import com.yingsu.newbuss.service.IBussesserService;
 import com.yingsu.newbuss.service.IUserService;
 import com.yingsu.newbuss.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,9 +24,18 @@ public class UserControler {
     @Autowired
     IUserService userService;
 
+    @Autowired
+    IBussesserService bussesserService;
+
     @RequestMapping("/index")
-    public String index(){
-        return "user/index";
+    public ModelAndView index(HttpSession session, String name) {
+        ModelAndView view = new ModelAndView("user/index");
+        TUser user = (TUser) session.getAttribute(Constant.USER_INFO);
+        if (user != null) {
+            Integer bussId = user.getBussId();
+            view.addObject("bussId", bussId);
+        }
+        return view;
     }
 
     /**
@@ -30,8 +44,16 @@ public class UserControler {
      */
     @RequestMapping("/login")
     public String login(){
-
         return "user/login";
+    }
+
+
+    /**
+     * 注册时跳转
+     */
+    @RequestMapping("/register")
+    public String register(){
+        return "user/register";
     }
 
     /**
@@ -50,6 +72,13 @@ public class UserControler {
             // 调用service层，通过接口的注入调用实现类的方法，userService就是接口注入的引用，userLogin(mobile,password)实现类的方法
             // 程序走到这里会进入service层，按ctrl+左键进入，service执行完会回到这里
             TUser user = userService.userLogin(mobile,password);
+            TBussesser buss = null;
+            if (user != null) {
+                buss = bussesserService.getBussInfo(user.getId());
+                if (buss != null){
+                    user.setBussId(buss.getId());
+                }
+            }
             if (user == null){
                 // 判断查出来的结果，给返回对象修改返回值
                 resultBase.setResultCode("-101");
@@ -95,14 +124,6 @@ public class UserControler {
     }
 
     /**
-     * 注册时跳转
-     */
-    @RequestMapping("/register")
-    public String register(){
-        return "user/register";
-    }
-
-    /**
      * 退出登录
      */
     @RequestMapping("/loginout")
@@ -114,14 +135,17 @@ public class UserControler {
     }
 
     /**
-     * 登录时查数据库
-     * @param myfile
-     * @return
+     * 检查是否登录
      */
-    @RequestMapping("/uploadFile")
+    @RequestMapping("/checkLogin")
     @ResponseBody
-    public ResultBase uploadFile(MultipartFile myfile){
+    public ResultBase checkLogin(HttpSession session){
         ResultBase resultBase = new ResultBase();
+        TUser user = (TUser) session.getAttribute(Constant.USER_INFO);
+        if (user == null){
+            resultBase.setResultCode("-12");
+            resultBase.setResultMsg("登录失效，请重新登录！");
+        }
         return resultBase;
     }
 }

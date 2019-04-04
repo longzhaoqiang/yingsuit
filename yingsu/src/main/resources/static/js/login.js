@@ -2,6 +2,7 @@ $(function () {
 
 })
 
+// 登录
 function commit() {
     var mobile = $("#mobile").val();
     var password = $("#password").val();

@@ -635,6 +635,14 @@ button.weui-btn_plain-default, button.weui-btn_plain-primary, input.weui-btn_pla
     word-break: break-all
 }
 
+.weui-label_1 {
+    margin-bottom: 0px;
+    display: block;
+    width: 105px;
+    word-wrap: break-word;
+    word-break: break-all
+}
+
 .weui-input {
     width: 100%;
     border: 0;

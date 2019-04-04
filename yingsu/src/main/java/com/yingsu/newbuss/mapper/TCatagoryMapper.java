@@ -2,8 +2,15 @@ package com.yingsu.newbuss.mapper;
 
 import com.yingsu.newbuss.entity.TCatagory;
 
+import java.util.List;
+
 public interface TCatagoryMapper {
-    int deleteByPrimaryKey(Integer id);
+
+    /**
+     * 获取行业分类列表
+     * @return
+     */
+    List<TCatagory> findCatagoryList();
 
     int insert(TCatagory record);
 

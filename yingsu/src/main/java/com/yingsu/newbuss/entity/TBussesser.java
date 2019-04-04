@@ -5,7 +5,11 @@ import java.util.Date;
 public class TBussesser {
     private Integer id;
 
+    private String mobile;
+
     private String bussesserName;
+
+    private Integer userId;
 
     private Integer communityId;
 
@@ -23,12 +27,28 @@ public class TBussesser {
         this.id = id;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     public String getBussesserName() {
         return bussesserName;
     }
 
     public void setBussesserName(String bussesserName) {
         this.bussesserName = bussesserName == null ? null : bussesserName.trim();
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public Integer getCommunityId() {

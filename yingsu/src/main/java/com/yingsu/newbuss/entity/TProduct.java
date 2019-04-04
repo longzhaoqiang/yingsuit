@@ -10,9 +10,9 @@ public class TProduct {
 
     private String productName;
 
-    private Integer commodityId;
+    private Integer bussId;
 
-    private Integer pictrueId;
+    private Integer commodityId;
 
     private BigDecimal price;
 
@@ -23,6 +23,12 @@ public class TProduct {
     private String sendRange;
 
     private String productDetails;
+
+    private Integer isTimegoods;
+
+    private Integer isUse;
+
+    private Integer isDelete;
 
     private Date createTime = new Date();
 
@@ -50,20 +56,20 @@ public class TProduct {
         this.productName = productName == null ? null : productName.trim();
     }
 
+    public Integer getBussId() {
+        return bussId;
+    }
+
+    public void setBussId(Integer bussId) {
+        this.bussId = bussId;
+    }
+
     public Integer getCommodityId() {
         return commodityId;
     }
 
     public void setCommodityId(Integer commodityId) {
         this.commodityId = commodityId;
-    }
-
-    public Integer getPictrueId() {
-        return pictrueId;
-    }
-
-    public void setPictrueId(Integer pictrueId) {
-        this.pictrueId = pictrueId;
     }
 
     public BigDecimal getPrice() {
@@ -104,6 +110,30 @@ public class TProduct {
 
     public void setProductDetails(String productDetails) {
         this.productDetails = productDetails;
+    }
+
+    public Integer getIsTimegoods() {
+        return isTimegoods;
+    }
+
+    public void setIsTimegoods(Integer isTimegoods) {
+        this.isTimegoods = isTimegoods;
+    }
+
+    public Integer getIsUse() {
+        return isUse;
+    }
+
+    public void setIsUse(Integer isUse) {
+        this.isUse = isUse;
+    }
+
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
     }
 
     public Date getCreateTime() {

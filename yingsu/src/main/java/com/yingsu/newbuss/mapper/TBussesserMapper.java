@@ -5,13 +5,20 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TBussesserMapper {
-    int deleteByPrimaryKey(Integer id);
+    TBussesser selectByPrimaryKey(Integer id);
+
+    /**
+     * 通过用户名查找商家信息
+     * @param userId
+     * @return
+     */
+    TBussesser selectByUid(Integer userId);
 
     int insert(TBussesser record);
 
     int insertSelective(TBussesser record);
 
-    TBussesser selectByPrimaryKey(Integer id);
+
 
     int updateByPrimaryKeySelective(TBussesser record);
 

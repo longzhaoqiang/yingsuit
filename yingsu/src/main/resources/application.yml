@@ -20,7 +20,7 @@ spring:
     timeout: 5000
   mvc:
     view:
-      prefix: /
+      prefix: /templates/
       suffix: .html
   thymeleaf:
     cache: false

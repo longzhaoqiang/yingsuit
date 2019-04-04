@@ -11,7 +11,7 @@ public class TUser {
 
     private String mobile;
 
-    private String bussId;
+    private Integer bussId;
 
     private Date createTime;
 
@@ -47,11 +47,11 @@ public class TUser {
         this.mobile = mobile == null ? null : mobile.trim();
     }
 
-    public String getBussId() {
+    public Integer getBussId() {
         return bussId;
     }
 
-    public void setBussId(String bussId) {
+    public void setBussId(Integer bussId) {
         this.bussId = bussId;
     }
 

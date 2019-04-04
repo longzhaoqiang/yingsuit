@@ -1,6 +1,5 @@
 .order-group{}
 .order-group .order-group-item{
-    margin-bottom: 0.625rem;
     background: #fff;
     padding: 0 0.625rem;
 }

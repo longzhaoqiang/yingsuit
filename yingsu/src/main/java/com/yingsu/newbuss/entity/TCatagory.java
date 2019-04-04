@@ -1,9 +1,13 @@
 package com.yingsu.newbuss.entity;
 
+import java.util.Date;
+
 public class TCatagory {
     private Integer id;
 
-    private String commodityName;
+    private String catagoryName;
+
+    private Date createTime;
 
     public Integer getId() {
         return id;
@@ -13,11 +17,19 @@ public class TCatagory {
         this.id = id;
     }
 
-    public String getCommodityName() {
-        return commodityName;
+    public String getCatagoryName() {
+        return catagoryName;
     }
 
-    public void setCommodityName(String commodityName) {
-        this.commodityName = commodityName == null ? null : commodityName.trim();
+    public void setCatagoryName(String catagoryName) {
+        this.catagoryName = catagoryName;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }
