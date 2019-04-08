@@ -90,10 +90,17 @@ public class IndexController {
         return "user/timeGoods";
     }
 
+
     // 页面跳转--已下架商品页
     @RequestMapping("/noUseGoods")
     public String noUseGoods(HttpSession session){
         return "user/noUseGoods";
+    }
+
+    // 页面跳转--修改密码页
+    @RequestMapping("/repassword")
+    public String repassword(HttpSession session){
+        return "user/repassword";
     }
 
     // 页面跳转--登录页面

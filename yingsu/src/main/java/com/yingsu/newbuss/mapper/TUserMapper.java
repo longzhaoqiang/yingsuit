@@ -14,8 +14,6 @@ public interface TUserMapper {
     // 查询用户信息，然后返回，用能保存用户信息的类型来接收
     TUser userLogin(@Param("mobile") String mobile, @Param("password") String password);
 
-    int deleteByPrimaryKey(Integer id);
-
     int insert(TUser record);
 
     int insertSelective(TUser record);

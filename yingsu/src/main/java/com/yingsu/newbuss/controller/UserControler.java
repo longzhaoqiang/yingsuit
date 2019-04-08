@@ -27,6 +27,8 @@ public class UserControler {
     @Autowired
     IBussesserService bussesserService;
 
+    Integer i = 10;
+
     @RequestMapping("/index")
     public ModelAndView index(HttpSession session, String name) {
         ModelAndView view = new ModelAndView("user/index");
@@ -116,7 +118,30 @@ public class UserControler {
                 }
             }
         }catch (Exception e){
-            System.out.println(e);
+            resultBase.setResultCode("-101");
+            resultBase.setResultMsg("系统异常！");
+        }
+        return resultBase;
+    }
+
+    /**
+     * 重置密码查询老密码是否正确
+     * @param oldPassword
+     * @return
+     */
+    @RequestMapping("/reSetPw_1")
+    @ResponseBody
+    public ResultBase reSetPw(HttpSession session, String oldPassword, String newPassword){
+        ResultBase resultBase = new ResultBase();
+        try {
+            TUser user = (TUser) session.getAttribute(Constant.USER_INFO);
+            if (user != null) {
+                resultBase = userService.resetPw_1(session, oldPassword, newPassword);
+            } else {
+                resultBase.setResultCode("-101");
+                resultBase.setResultCode("");
+            }
+        }catch (Exception e){
             resultBase.setResultCode("-101");
             resultBase.setResultMsg("系统异常！");
         }
